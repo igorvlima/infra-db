@@ -37,7 +37,7 @@ resource "aws_db_instance" "db-rds-fiaptech" {
   allocated_storage       = 20
   storage_type            = "gp2"
   engine                  = "postgres"
-  engine_version          = "11.17"
+  engine_version          = "17"
   instance_class          = "db.t2.micro"
   username                = "dbadmin"
   publicly_accessible     = false
