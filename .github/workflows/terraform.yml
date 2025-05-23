@@ -38,7 +38,8 @@ jobs:
           -var="vpc_id=${{ secrets.VPC_ID }}" \
           -var="security_group_name=${{ secrets.SECURITY_GROUP_NAME }}" \
           -var="db_user=${{ secrets.DB_USER }}" \
-          -var="db_password=${{ secrets.DB_PASSWORD }}"
+          -var="db_password=${{ secrets.DB_PASSWORD }}" \
+          -out=tfplan
 
 
     - name: Terraform Apply
