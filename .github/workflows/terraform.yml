@@ -33,6 +33,8 @@ jobs:
       run: |
         echo 'vpc_id = "${{ secrets.VPC_ID }}"' > terraform.tfvars
         echo 'security_group_name = "${{ secrets.SECURITY_GROUP_NAME }}"' >> terraform.tfvars
+        echo 'db_username = "${{ secrets.DB_USERNAME }}"' > terraform.tfvars
+        echo 'db_password = "${{ secrets.DB_PASSWORD }}"' >> terraform.tfvars
     
 
     - name: Terraform Init

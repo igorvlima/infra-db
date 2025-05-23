@@ -6,5 +6,14 @@ variable "vpc_id" {
 variable "security_group_name" {
   description = "Nome do security group do RDS"
   type        = string
-  default     = "rds-prod-securitygroup"
+}
+
+variable "db_user" {
+  description = "User do banco"
+  type        = string
+}
+
+variable "db_password" {
+  description = "Senha do banco"
+  type        = string
 }

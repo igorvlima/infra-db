@@ -39,7 +39,8 @@ resource "aws_db_instance" "db-rds-fiaptech" {
   engine                  = "postgres"
   engine_version          = "17"
   instance_class          = "db.t2.micro"
-  username                = "dbadmin"
+  username                = var.db_user
+  password                = var.db_password
   publicly_accessible     = false
   vpc_security_group_ids  = [aws_security_group.sg-rds-fiaptech.id]
 
