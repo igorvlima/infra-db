@@ -28,19 +28,18 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
-
-    - name: Create terraform.tfvars
-      run: |
-        echo 'vpc_id = "${{ secrets.VPC_ID }}"' > terraform.tfvars
-        echo 'security_group_name = "${{ secrets.SECURITY_GROUP_NAME }}"' >> terraform.tfvars
-        echo 'db_username = "${{ secrets.DB_USERNAME }}"' > terraform.tfvars
-        echo 'db_password = "${{ secrets.DB_PASSWORD }}"' >> terraform.tfvars
     
     - name: Terraform Init
       run: terraform init
 
     - name: Terraform Plan
-      run: terraform plan -var-file="terraform.tfvars" -out=tfplan
+      run: |
+        terraform plan -input=false \
+          -var="vpc_id=${{ secrets.VPC_ID }}" \
+          -var="security_group_name=${{ secrets.SECURITY_GROUP_NAME }}" \
+          -var="db_user=${{ secrets.DB_USER }}" \
+          -var="db_password=${{ secrets.DB_PASSWORD }}"
+
 
     - name: Terraform Apply
       run: terraform apply -input=false tfplan
