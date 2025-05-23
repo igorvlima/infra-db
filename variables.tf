@@ -11,6 +11,7 @@ variable "security_group_name" {
 variable "db_user" {
   description = "User do banco"
   type        = string
+  sensitive   = true
 }
 
 variable "db_password" {
