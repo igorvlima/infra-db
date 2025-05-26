@@ -41,7 +41,6 @@ jobs:
           -var="db_password=${{ secrets.DB_PASSWORD }}" \
           -out=tfplan
 
-
     - name: Terraform Apply
       run: terraform apply -input=false tfplan
 
